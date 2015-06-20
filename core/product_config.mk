@@ -181,7 +181,7 @@ include $(BUILD_SYSTEM)/device.mk
 
 # A PA build needs only the PA product makefiles.
 ifneq ($(LPOP_BUILD),)
-  all_product_configs := $(shell ls vendor/pa/products/pa_$(LPOP_BUILD).mk)
+   all_product_configs := $(shell ls vendor/lpop/products/lpop_$(LPOP_BUILD).mk)
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
