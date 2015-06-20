@@ -1864,8 +1864,6 @@ function make()
     mk_timer $(get_make_command) "$@"
 }
 
-
-
 if [ "x$SHELL" != "x/bin/bash" ]; then
     case `ps -o command -p $$` in
         *bash*)
