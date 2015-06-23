@@ -179,7 +179,7 @@ include $(BUILD_SYSTEM)/node_fns.mk
 include $(BUILD_SYSTEM)/product.mk
 include $(BUILD_SYSTEM)/device.mk
 
-# A PA build needs only the PA product makefiles.
+# A LPOP build needs only the LPOP product makefiles.
 ifneq ($(LPOP_BUILD),)
    all_product_configs := $(shell ls vendor/lpop/products/lpop_$(LPOP_BUILD).mk)
 else
