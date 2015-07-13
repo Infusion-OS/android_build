@@ -64,13 +64,13 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^lpop_") ; then
-       LPOP_BUILD=$(echo -n $1 | sed -e 's/^lpop_//g')
-       export BUILD_NUMBER=$((date +%s%N ; echo $LPOP_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10)
+    if (echo -n $1 | grep -q -e "^infusion_") ; then
+       INFUSION_BUILD=$(echo -n $1 | sed -e 's/^infusion_//g')
+       export BUILD_NUMBER=$((date +%s%N ; echo $INFUSION_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10)
     else
-       LPOP_BUILD=
+       INFUSION_BUILD=
     fi
-    export LPOP_BUILD
+    export INFUSION_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -642,8 +642,8 @@ function tapas()
 function eat()
 {
     if [ "$OUT" ] ; then
-        MODVERSION=`sed -n -e'/ro\.lpop\.version/s/.*=//p' $OUT/system/build.prop`
-        ZIPFILE=pa-$MODVERSION.zip
+        MODVERSION=`sed -n -e'/ro\.infusion\.version/s/.*=//p' $OUT/system/build.prop`
+        ZIPFILE=infusion-$MODVERSION.zip
         ZIPPATH=$OUT/$ZIPFILE
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
@@ -1724,7 +1724,7 @@ function repopick() {
 function fixup_common_out_dir() {
     common_out_dir=$(get_build_var OUT_DIR)/target/common
     target_device=$(get_build_var TARGET_DEVICE)
-    if [ ! -z $LPOP_FIXUP_COMMON_OUT ]; then
+    if [ ! -z $INFUSION_FIXUP_COMMON_OUT ]; then
         if [ -d ${common_out_dir} ] && [ ! -L ${common_out_dir} ]; then
             mv ${common_out_dir} ${common_out_dir}-${target_device}
             ln -s ${common_out_dir}-${target_device} ${common_out_dir}
@@ -1887,7 +1887,7 @@ unset f
 
 # Add completions
 check_bash_version && {
-    dirs="sdk/bash_completion vendor/lpop/bash_completion"
+    dirs="sdk/bash_completion vendor/infusion/bash_completion"
     for dir in $dirs; do
     if [ -d ${dir} ]; then
         for f in `/bin/ls ${dir}/[a-z]*.bash 2> /dev/null`; do

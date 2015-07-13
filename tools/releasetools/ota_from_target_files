@@ -609,14 +609,14 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.AppendExtra("endif;")
 
   builddate = time.strftime("%x");
-  product = GetBuildProp("ro.lpop.device", OPTIONS.info_dict);
+  product = GetBuildProp("ro.infusion.device", OPTIONS.info_dict);
   b = "Build date: %s"%(builddate);
   b2 = b.center(32, ' ');
   d = "Device: %s"%(product);
   d2 = d.center(32, ' ');
 
   script.Print("**********************************");
-  script.Print("*             LPOP-ROM            *");
+  script.Print("*          INFUSION-ROM          *");
   script.Print("*                                *");
   script.Print("*" + b2 + "*");
   script.Print("*" + d2 + "*");

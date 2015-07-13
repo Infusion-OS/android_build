@@ -179,9 +179,9 @@ include $(BUILD_SYSTEM)/node_fns.mk
 include $(BUILD_SYSTEM)/product.mk
 include $(BUILD_SYSTEM)/device.mk
 
-# A LPOP build needs only the LPOP product makefiles.
-ifneq ($(LPOP_BUILD),)
-   all_product_configs := $(shell ls vendor/lpop/products/lpop_$(LPOP_BUILD).mk)
+# A INFUSION build needs only the INFUSION product makefiles.
+ifneq ($(INFUSION_BUILD),)
+   all_product_configs := $(shell ls vendor/infusion/products/infusion_$(INFUSION_BUILD).mk)
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
@@ -192,9 +192,9 @@ else
     # files in the tree.
     all_product_configs := $(get-all-product-makefiles)
   endif # TARGET_BUILD_APPS
-endif # LPOP_BUILD
+endif # INFUSION_BUILD
 
-ifeq ($(LPOP_BUILD),)
+ifeq ($(INFUSION_BUILD),)
 # Find the product config makefile for the current product.
 # all_product_configs consists items like:
 # <product_name>:<path_to_the_product_makefile>

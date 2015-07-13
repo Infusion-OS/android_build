@@ -44,7 +44,7 @@ default_team_rem = "github"
 # this shouldn't change unless google makes changes
 local_manifest_dir = ".repo/local_manifests"
 # change this to your name on github (or equivalent hosting)
-android_team = "LPOP-ROM"
+android_team = "INFUSION-ROM"
 
 
 def check_repo_exists(git_data):
@@ -226,7 +226,7 @@ def parse_device_from_folder(device):
 
 
 def parse_dependency_file(location):
-    dep_file = "lpop.dependencies"
+    dep_file = "infusion.dependencies"
     dep_location = '/'.join([location, dep_file])
     if not os.path.isfile(dep_location):
         print("WARNING: %s file not found" % dep_location)
